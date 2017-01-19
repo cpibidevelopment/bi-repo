@@ -1,0 +1,55 @@
+DROP TABLE BIADMIN.BI_CLAIMS_AGENT_MV CASCADE CONSTRAINTS;
+
+CREATE TABLE BIADMIN.BI_CLAIMS_AGENT_MV
+(
+  CLAIM_ID               NUMBER(12)             NOT NULL,
+  LINE_CD                VARCHAR2(2 BYTE)       NOT NULL,
+  ISS_CD                 VARCHAR2(2 BYTE)       NOT NULL,
+  CLAIM_NO               VARCHAR2(26 BYTE),
+  POLICY_NO              VARCHAR2(30 BYTE),
+  LOSS_DATE              VARCHAR2(8 BYTE),
+  FILE_DATE              VARCHAR2(8 BYTE),
+  EFFECTIVITY_DATE       VARCHAR2(8 BYTE),
+  CLOSE_DATE             VARCHAR2(8 BYTE),
+  SUBLINE_CD             VARCHAR2(7 BYTE)       NOT NULL,
+  POL_ISS_CD             VARCHAR2(2 BYTE)       NOT NULL,
+  ISSUE_YY               NUMBER(2)              NOT NULL,
+  POL_SEQ_NO             NUMBER(7)              NOT NULL,
+  RENEW_NO               NUMBER(2)              NOT NULL,
+  ASSD_NO                NUMBER(12)             NOT NULL,
+  PARENT_NO              NUMBER(12)             NOT NULL,
+  PARENT_NAME            VARCHAR2(240 BYTE)     NOT NULL,
+  INTM_TYPE              VARCHAR2(2 BYTE)       NOT NULL,
+  CLM_STAT_CD            VARCHAR2(2 BYTE),
+  OLD_STAT_CD            VARCHAR2(2 BYTE),
+  PERIL_CD               NUMBER(5),
+  LOSS_AMOUNT            NUMBER,
+  EXPENSE_AMOUNT         NUMBER,
+  LOSS_RETENTION_AMT     NUMBER,
+  EXP_RETENTION_AMT      NUMBER,
+  LOSS_PROPOR_TREATY     NUMBER,
+  EXP_PROPOR_TREATY      NUMBER,
+  LOSS_FACULTATIVE       NUMBER,
+  EXP_FACULTATIVE        NUMBER,
+  LOSS_NONPROPOR_TREATY  NUMBER,
+  EXP_NONPROPOR_TREATY   NUMBER,
+  LINE_CODE              NUMBER
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING;

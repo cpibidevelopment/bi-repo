@@ -1,0 +1,88 @@
+ALTER TABLE BIADMIN.BI_AGENT_DIM
+ DROP PRIMARY KEY CASCADE;
+
+DROP TABLE BIADMIN.BI_AGENT_DIM CASCADE CONSTRAINTS;
+
+CREATE TABLE BIADMIN.BI_AGENT_DIM
+(
+  AGENT_CODE         NUMBER(12),
+  AGENT_NAME         VARCHAR2(240 BYTE)         NOT NULL,
+  AGENT_TYPE         VARCHAR2(50 BYTE)          NOT NULL,
+  BRANCH_NAME        VARCHAR2(500 BYTE),
+  PARENT_AGENT       VARCHAR2(240 BYTE),
+  PARENT_AGENT_CODE  NUMBER(12),
+  BIRTHDATE          DATE,
+  REF_INTM_CD        VARCHAR2(10 BYTE),
+  TIN                VARCHAR2(20 BYTE)          NOT NULL,
+  CORP_TAG           VARCHAR2(1 BYTE)           NOT NULL,
+  SPECIAL_RATE       VARCHAR2(1 BYTE)           NOT NULL,
+  LIC_TAG            VARCHAR2(1 BYTE)           NOT NULL,
+  MAIL_ADDR1         VARCHAR2(50 BYTE)          NOT NULL,
+  MAIL_ADDR2         VARCHAR2(50 BYTE),
+  MAIL_ADDR3         VARCHAR2(50 BYTE),
+  BILL_ADDR1         VARCHAR2(50 BYTE)          NOT NULL,
+  BILL_ADDR2         VARCHAR2(50 BYTE),
+  BILL_ADDR3         VARCHAR2(50 BYTE),
+  PHONE_NO           VARCHAR2(40 BYTE),
+  CA_NO              VARCHAR2(15 BYTE),
+  LF_TAG             VARCHAR2(1 BYTE),
+  PAYT_TERMS         VARCHAR2(3 BYTE),
+  EFF_DATE           DATE,
+  EXPIRY_DATE        DATE,
+  REMARKS            VARCHAR2(4000 BYTE),
+  WTAX_RATE          NUMBER(5,3),
+  ACTIVE_TAG         VARCHAR2(1 BYTE)           NOT NULL,
+  INPUT_VAT_RATE     NUMBER(5,3),
+  OLD_INTM_NO        NUMBER(12),
+  CA_DATE            DATE,
+  NICKNAME           VARCHAR2(40 BYTE),
+  CP_NO              VARCHAR2(40 BYTE),
+  EMAIL_ADD          VARCHAR2(50 BYTE),
+  FAX_NO             VARCHAR2(40 BYTE),
+  HOME_ADD           VARCHAR2(150 BYTE),
+  MASTER_INTM_NO     NUMBER(12),
+  SUN_NO             VARCHAR2(40 BYTE),
+  SMART_NO           VARCHAR2(40 BYTE),
+  GLOBE_NO           VARCHAR2(40 BYTE),
+  PIN_CODE           VARCHAR2(6 BYTE)
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING;
+
+
+--  There is no statement for index BIADMIN.SYS_C0012817.
+--  The object is created when the parent object is created.
+
+ALTER TABLE BIADMIN.BI_AGENT_DIM ADD (
+  PRIMARY KEY
+  (AGENT_CODE)
+  USING INDEX
+    TABLESPACE USERS
+    PCTFREE    10
+    INITRANS   2
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                PCTINCREASE      0
+                BUFFER_POOL      DEFAULT
+               )
+  ENABLE VALIDATE);

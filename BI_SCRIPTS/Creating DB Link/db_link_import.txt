@@ -1,0 +1,46 @@
+1. Create sample user
+SQL> create user sctest identified by sctest;
+
+User created.
+
+SQL> grant imp_full_database to sctest;
+
+Grant succeeded.
+
+SQL> grant dba to sctest;
+
+Grant succeeded.
+
+SQL> grant resource to sctest;
+
+Grant succeeded.
+
+
+2. Create database link
+SQL> grant create database link to sctest;
+
+Grant succeeded.
+
+SQL> conn sctest/sctest
+Connected.
+SQL> CREATE database link fgic_scott connect to scott identified by tiger using
+'FGIC';
+
+Database link created.
+
+3. Grant exp_full_database and imp_full_database to both user;
+
+SQL> grant exp_full_database to sctest;
+
+SQL> grant exp_full_database to scott;
+
+SQL> grant imp_full_database to sctest;
+
+SQL> grant imp_full_database to scott;
+
+
+4. import thru database link
+C:\Users\Administrator>impdp sctest/sctest@fgicbi tables=scott.emp network_link=
+fgic_scott directory=fgi logfile=scott_from_fgic remap_schema=scott:sctest
+
+

@@ -1,0 +1,56 @@
+ALTER TABLE BIADMIN.BI_BRANCH_DIM
+ DROP PRIMARY KEY CASCADE;
+
+DROP TABLE BIADMIN.BI_BRANCH_DIM CASCADE CONSTRAINTS;
+
+CREATE TABLE BIADMIN.BI_BRANCH_DIM
+(
+  BRANCH_CODE   NUMBER(12),
+  BRANCH_NAME   VARCHAR2(50 BYTE)               NOT NULL,
+  BRANCH_GROUP  VARCHAR2(50 BYTE),
+  CITY          VARCHAR2(50 BYTE),
+  REGION        VARCHAR2(50 BYTE),
+  LVL_NAME      VARCHAR2(100 BYTE),
+  SLV_NAME      VARCHAR2(100 BYTE),
+  ISS_CD        VARCHAR2(12 BYTE)
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING;
+
+
+--  There is no statement for index BIADMIN.SYS_C0012819.
+--  The object is created when the parent object is created.
+
+ALTER TABLE BIADMIN.BI_BRANCH_DIM ADD (
+  PRIMARY KEY
+  (BRANCH_CODE)
+  USING INDEX
+    TABLESPACE USERS
+    PCTFREE    10
+    INITRANS   2
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                PCTINCREASE      0
+                BUFFER_POOL      DEFAULT
+               )
+  ENABLE VALIDATE);
